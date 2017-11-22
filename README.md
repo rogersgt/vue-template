@@ -1,2 +1,2 @@
 # Vue Boiler Plate
-Boiler plate for vue.js with browserify, vueify, vue-router, and vue templates
+Boiler plate for Vue 2.0 and webpack ready for development and production.
