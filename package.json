@@ -7,26 +7,35 @@
     "vue": "vue/dist/vue.common"
   },
   "scripts": {
-    "build:dev": "watchify -p browserify-hmr -t [ babelify --presets [ es2015 ] ] -t [ vueify ] -e src/app.js -o dist/index.js"
+    "build:dev": "webpack --config webpack.dev.js",
+    "build:production": "yarn files && webpack --config webpack.prod.js",
+    "files": "mkdir -p dist && cp src/index.html dist/ && cp -r src/media dist/",
+    "dev": "webpack-dev-server --config webpack.dev.js --hot --content-base dist/",
+    "start": "yarn && yarn files & yarn dev"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv-webpack": "^1.5.4",
     "element-ui": "^1.3.3",
-    "vue": "^2.3.3",
+    "fastclick": "^1.0.6",
+    "vue": "^2.5.7",
     "vue-resource": "^1.3.3",
-    "vue-router": "^2.5.3"
+    "vue-router": "2.5.3"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.23.1",
+    "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-vue": "^0.1.0",
-    "babelify": "^7.3.0",
-    "browserify": "^14.1.0",
-    "browserify-hmr": "^0.3.5",
-    "node-sass": "^4.5.2",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "vue-hot-reload-api": "^2.2.4",
+    "vue-loader": "^13.5.0",
     "vueify": "^9.4.1",
-    "watchify": "^3.9.0"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }
