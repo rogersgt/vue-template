@@ -26,8 +26,6 @@ const routes = [
    }
 ];
 
-console.log(process.env.API_HOST)
-
 const router = new VueRouter({
   routes,
   mode: 'history'
