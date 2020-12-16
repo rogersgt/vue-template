@@ -9,7 +9,7 @@ Vue.use(VueResource);
 Vue.use(() => {
   if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
-        fastClick.attach(document.body);
+      fastClick.attach(document.body);
     }, false);
   }
 });
@@ -31,6 +31,6 @@ const router = new VueRouter({
   mode: 'history'
 });
 
-const app = new Vue({
+new Vue({
   router
 }).$mount('#app');
