@@ -2,40 +2,37 @@
   "name": "name",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "browser": {
     "vue": "vue/dist/vue.common"
   },
   "scripts": {
-    "build:dev": "webpack --config webpack.dev.js",
-    "build:production": "yarn files && webpack --config webpack.prod.js",
-    "files": "mkdir -p dist && cp src/index.html dist/ && cp -r src/media dist/",
-    "dev": "webpack-dev-server --config webpack.dev.js --hot --content-base dist/",
-    "start": "yarn && yarn files & yarn dev"
+    "build": "rm -rf dist && yarn && NODE_ENV=production webpack",
+    "dev": ""
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Grady Rogers",
+  "license": "MIT",
   "dependencies": {
-    "dotenv-webpack": "^1.5.4",
-    "element-ui": "^1.3.3",
-    "fastclick": "^1.0.6",
-    "vue": "^2.5.7",
-    "vue-resource": "^1.3.3",
+    "element-ui": "1.3.3",
+    "fastclick": "1.0.6",
+    "vue": "2.6.12",
+    "vue-resource": "1.3.3",
     "vue-router": "2.5.3"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.23.1",
-    "babel-loader": "^7.1.2",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-vue": "^0.1.0",
-    "css-loader": "^0.28.7",
-    "node-sass": "^4.7.2",
-    "sass-loader": "^6.0.6",
-    "vue-hot-reload-api": "^2.2.4",
-    "vue-loader": "^13.5.0",
-    "vueify": "^9.4.1",
-    "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.4"
+    "@babel/core": "7.12.10",
+    "@babel/preset-env": "7.12.11",
+    "babel-loader": "8.2.2",
+    "babel-plugin-source-map-support": "2.1.3",
+    "css-loader": "0.28.7",
+    "file-loader": "6.2.0",
+    "html-webpack-plugin": "^4.5.0",
+    "node-sass": "5.0.0",
+    "sass-loader": "10.1.0",
+    "vue-loader": "15.9.5",
+    "vue-template-compiler": "2.6.12",
+    "webpack": "4.x",
+    "webpack-cli": "4.x",
+    "webpack-dev-server": "3.11.0"
   }
 }
