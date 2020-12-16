@@ -1,5 +1,6 @@
 const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 
 const {
   NODE_ENV = 'development',
@@ -11,7 +12,6 @@ module.exports = {
   mode: NODE_ENV,
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist/',
     filename: 'index.js',
   },
   module: {
@@ -40,10 +40,14 @@ module.exports = {
   },
   plugins: [
     // make sure to include the plugin!
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new HtmlPlugin({
+      template: `${__dirname}/src/index.html`,
+    }),
   ],
   ...(NODE_ENV === 'development') && {
     devServer: {
+      hot: true,
       contentBase: `${__dirname}/dist`,
       compress: true,
       port: DEV_SERVER_PORT,

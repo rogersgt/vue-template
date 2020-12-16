@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "browser": {
+    "vue": "vue/dist/vue.common"
+  },
   "scripts": {
-    "build": "yarn && NODE_ENV=production webpack"
+    "build": "rm -rf dist && yarn && NODE_ENV=production webpack",
+    "dev": ""
   },
   "author": "Grady Rogers",
   "license": "MIT",
@@ -22,6 +26,7 @@
     "babel-plugin-source-map-support": "2.1.3",
     "css-loader": "0.28.7",
     "file-loader": "6.2.0",
+    "html-webpack-plugin": "^4.5.0",
     "node-sass": "5.0.0",
     "sass-loader": "10.1.0",
     "vue-loader": "15.9.5",
