@@ -11,14 +11,18 @@
 </style>
 <template lang="html">
 <section class="outerSection">
-  <img src="media/bmurray.jpg" alt="Bill Murray" />
+  <img v-bind:src="imgSrc" alt="Bill Murray" />
   <h3>He's the king!</h3>
 </section>
 </template>
 <script>
+import bmurray from '../media/bmurray.jpg';
+
 export default {
   data: function() {
-    return {};
+    return {
+      imgSrc: bmurray,
+    };
   },
   created: function() {
     console.log('CREATED HOME VUE');
