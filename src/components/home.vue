@@ -5,7 +5,7 @@
   top: 5%;
   text-align: center;
   img {
-    width: 100%;
+    width: 50%;
   }
 }
 </style>

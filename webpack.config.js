@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 
@@ -7,8 +8,12 @@ const {
   DEV_SERVER_PORT = 6000,
 } = process.env;
 
+
 module.exports = {
-  entry: './src/app.js',
+  entry: {
+    filename: './src/app.js',
+  },
+  ...(NODE_ENV === 'development') && { devtool: 'inline-source-map' },
   mode: NODE_ENV,
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -39,18 +44,15 @@ module.exports = {
     ]
   },
   plugins: [
-    // make sure to include the plugin!
     new VueLoaderPlugin(),
     new HtmlPlugin({
       template: `${__dirname}/src/index.html`,
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
-  ...(NODE_ENV === 'development') && {
-    devServer: {
-      hot: true,
-      contentBase: `${__dirname}/dist`,
-      compress: true,
-      port: DEV_SERVER_PORT,
-    },
+  devServer: {
+    hot: true,
+    contentBase: './dist',
+    open: true,
   },
 };
